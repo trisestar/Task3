@@ -3,6 +3,8 @@ import entity.Point;
 import org.testng.annotations.Test;
 import parser.Parser;
 import reader.StreamReader;
+import repository.Specification;
+import repository.impl.HeightSpecification;
 import service.LocationService;
 import service.Service;
 import service.impl.LocationServiceImpl;
@@ -57,5 +59,13 @@ public class Tests {
         Cone cone = new Cone(11234145, center, 1,3);
         Service service = new ServiceImpl();
         System.out.println(service.calcVolumeRatio(cone, 2.0));
+    }
+
+    @Test
+    public void specTest(){
+        Point center = new Point(0, 0 , 0);
+        Cone cone = new Cone(11234145, center, 1,3);
+        Specification specification= new HeightSpecification(2,4);
+        System.out.println(specification.specify(cone));
     }
 }

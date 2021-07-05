@@ -39,7 +39,7 @@ public class Parser {
                             throw new ParseException("Wrong line " + splittedAgain[i]);
                         }
                     }
-                    list.add(new Cone((int) doubleBuf[0], new Point(doubleBuf[1], doubleBuf[2], doubleBuf[3]), doubleBuf[4], doubleBuf[5]));
+                    list.add(new Cone((long) doubleBuf[0], new Point(doubleBuf[1], doubleBuf[2], doubleBuf[3]), doubleBuf[4], doubleBuf[5]));
                 } catch (ParseException exception) {
                     exception.printStackTrace();
                     logger.error(exception);
