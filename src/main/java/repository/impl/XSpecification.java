@@ -13,7 +13,7 @@ public class XSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.center().x()<= targetXMax && cone.center().x()>= targetXMin){
+        if (cone.getCenter().x()<= targetXMax && cone.getCenter().x()>= targetXMin){
             return true;
         }
         return false;

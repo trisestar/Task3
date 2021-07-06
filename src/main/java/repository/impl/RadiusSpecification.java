@@ -13,7 +13,7 @@ public class RadiusSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.radius()<= targetRadiusMax && cone.radius()>= targetRadiusMin){
+        if (cone.getRadius()<= targetRadiusMax && cone.getRadius()>= targetRadiusMin){
             return true;
         }
         return false;

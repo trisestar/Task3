@@ -7,9 +7,9 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public boolean isOnXAxis(Cone cone) {
-        double yCoordinate = cone.center().y();
-        double zCoordinate = cone.center().z();
-        if (yCoordinate ==0 && zCoordinate<= cone.radius() && zCoordinate >= (-cone.radius())){
+        double yCoordinate = cone.getCenter().y();
+        double zCoordinate = cone.getCenter().z();
+        if (yCoordinate ==0 && zCoordinate<= cone.getRadius() && zCoordinate >= (-cone.getRadius())){
             return true;
         }
         return false;
@@ -17,9 +17,9 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public boolean isOnYAxis(Cone cone) {
-        double xCoordinate = cone.center().x();
-        double zCoordinate = cone.center().z();
-        if (xCoordinate<= cone.radius() && xCoordinate >= (-cone.radius()) && zCoordinate<= cone.radius() && zCoordinate >= (-cone.radius())){
+        double xCoordinate = cone.getCenter().x();
+        double zCoordinate = cone.getCenter().z();
+        if (xCoordinate<= cone.getRadius() && xCoordinate >= (-cone.getRadius()) && zCoordinate<= cone.getRadius() && zCoordinate >= (-cone.getRadius())){
             return true;
         }
         return false;
@@ -27,9 +27,9 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public boolean isOnZAxis(Cone cone) {
-        double xCoordinate = cone.center().x();
-        double yCoordinate = cone.center().y();
-        if (yCoordinate ==0 && xCoordinate<= cone.radius() && xCoordinate >= (-cone.radius())){
+        double xCoordinate = cone.getCenter().x();
+        double yCoordinate = cone.getCenter().y();
+        if (yCoordinate ==0 && xCoordinate<= cone.getRadius() && xCoordinate >= (-cone.getRadius())){
             return true;
         }
         return false;

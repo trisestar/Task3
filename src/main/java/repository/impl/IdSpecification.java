@@ -13,7 +13,7 @@ public class IdSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.id()<= targetIdMax && cone.id()>= targetIdMin){
+        if (cone.getId()<= targetIdMax && cone.getId()>= targetIdMin){
             return true;
         }
         return false;

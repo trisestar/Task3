@@ -5,31 +5,31 @@ import service.Service;
 
 public class ServiceImpl implements Service {
     public double calcGeneratrix(Cone cone) {
-        return Math.sqrt(cone.height() * cone.height() + cone.radius() * cone.radius());
+        return Math.sqrt(cone.getHeight() * cone.getHeight() + cone.getRadius() * cone.getRadius());
     }
 
     public double calcArea(Cone cone) {
         ServiceImpl service = new ServiceImpl();
-        return service.calcGeneratrix(cone) * cone.radius() * Math.PI + Math.PI * cone.radius() * cone.radius();
+        return service.calcGeneratrix(cone) * cone.getRadius() * Math.PI + Math.PI * cone.getRadius() * cone.getRadius();
     }
 
     public double calcSideArea(Cone cone) {
         ServiceImpl service = new ServiceImpl();
-        return service.calcGeneratrix(cone) * cone.radius() * Math.PI;
+        return service.calcGeneratrix(cone) * cone.getRadius() * Math.PI;
     }
 
     public double calcVolume(Cone cone) {
-        return cone.radius() * cone.radius() * cone.height() * Math.PI / 3;
+        return cone.getRadius() * cone.getRadius() * cone.getHeight() * Math.PI / 3;
     }
 
     public double calcVolumeRatio(Cone cone, Double planeY) {
-        if (planeY < cone.center().y() || planeY > (cone.center().y() + cone.height())) {
+        if (planeY < cone.getCenter().y() || planeY > (cone.getCenter().y() + cone.getHeight())) {
             return -1;
         }
 
         Service service = new ServiceImpl();
-        double smallHeight = cone.height() - planeY + cone.center().y();
-        double smallRadius = cone.radius() * smallHeight / cone.height();
+        double smallHeight = cone.getHeight() - planeY + cone.getCenter().y();
+        double smallRadius = cone.getRadius() * smallHeight / cone.getHeight();
         double volumeOfCone = service.calcVolume(cone);
         double volumeOfSplit = smallRadius * smallRadius * smallHeight * Math.PI / 3;
 
@@ -37,7 +37,7 @@ public class ServiceImpl implements Service {
     }
 
     public boolean isCone(Cone cone) {
-        if (cone.height() <= 0 || cone.radius() <= 0) {
+        if (cone.getHeight() <= 0 || cone.getRadius() <= 0) {
             return false;
         }
         return true;

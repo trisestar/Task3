@@ -3,6 +3,7 @@ package parser;
 import entity.Cone;
 import entity.Point;
 import exception.ParseException;
+import factory.ConeFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.ArrayList;
@@ -18,7 +19,8 @@ public class Parser {
         str = str.replaceAll("\r", "");
 
         String[] splitted = str.split("\n");
-        double[] doubleBuf = new double[6];
+        double[] coneParams = new double[5];
+        long id;
 
         for (String string : splitted) {
 
@@ -27,19 +29,20 @@ public class Parser {
             if (splittedAgain.length == 6) {
                 try {
                     if (splittedAgain[0].matches("\\d{8}")) {
-                        doubleBuf[0] = Double.parseDouble(splittedAgain[0]);
+                        id = Long.parseLong(splittedAgain[0]);
                     } else {
                         throw new ParseException("Wrong line " + splittedAgain[0]);
                     }
 
                     for (int i = 1; i < 6; i++) {
                         if (splittedAgain[i].matches("[-+]?\\d+")) {
-                            doubleBuf[i] = Double.parseDouble(splittedAgain[i]);
+                            coneParams[i-1] = Double.parseDouble(splittedAgain[i]);
                         } else {
                             throw new ParseException("Wrong line " + splittedAgain[i]);
                         }
                     }
-                    list.add(new Cone((long) doubleBuf[0], new Point(doubleBuf[1], doubleBuf[2], doubleBuf[3]), doubleBuf[4], doubleBuf[5]));
+                    ConeFactory coneFactory = new ConeFactory();
+                    list.add(coneFactory.createCone(id,coneParams));
                 } catch (ParseException exception) {
                     exception.printStackTrace();
                     logger.error(exception);

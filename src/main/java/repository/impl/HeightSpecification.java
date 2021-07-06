@@ -13,7 +13,7 @@ public class HeightSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.height()<=targetHeightMax && cone.height()>=targetHeightMin){
+        if (cone.getHeight()<=targetHeightMax && cone.getHeight()>=targetHeightMin){
             return true;
         }
         return false;

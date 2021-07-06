@@ -13,7 +13,7 @@ public class YSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.center().y()<= targetYMax && cone.center().y()>= targetYMin){
+        if (cone.getCenter().y()<= targetYMax && cone.getCenter().y()>= targetYMin){
             return true;
         }
         return false;

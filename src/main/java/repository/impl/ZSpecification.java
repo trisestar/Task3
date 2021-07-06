@@ -13,7 +13,7 @@ public class ZSpecification implements Specification {
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.center().z()<= targetZMax && cone.center().z()>= targetZMin){
+        if (cone.getCenter().z()<= targetZMax && cone.getCenter().z()>= targetZMin){
             return true;
         }
         return false;
