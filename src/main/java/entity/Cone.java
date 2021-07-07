@@ -11,11 +11,12 @@ import org.apache.logging.log4j.Logger;
 import java.util.Objects;
 
 public class Cone implements Observable {
-    private static Logger logger = LogManager.getLogger();
+    private static final Logger logger = LogManager.getLogger();
     long id;
     Point center;
     double radius;
     double height;
+
     Observer observer = new ConeObserver();
 
     public Cone(long id, Point center, double radius, double height) {
@@ -23,9 +24,12 @@ public class Cone implements Observable {
         this.center = center;
         this.radius = radius;
         this.height = height;
+
+        this.attach(new ConeObserver());
     }
 
     public Cone() {
+        this.attach(new ConeObserver());
     }
 
     public long getId() {
@@ -94,13 +98,13 @@ public class Cone implements Observable {
 
     @Override
     public void detach() {
-        this.observer=null;
+        this.observer = null;
     }
 
     @Override
     public void notifyObserver() {
-        if (observer==null){
-            logger.log(Level.INFO,"Observer is null");
+        if (observer == null) {
+            logger.log(Level.INFO, "Observer is null");
         } else {
             ConeEvent coneEvent = new ConeEvent(this);
             observer.parametersChange(coneEvent);

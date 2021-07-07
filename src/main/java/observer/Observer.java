@@ -1,5 +1,5 @@
 package observer;
 
 public interface Observer {
-    void parametersChange (ConeEvent event);
+    void parametersChange(ConeEvent event);
 }

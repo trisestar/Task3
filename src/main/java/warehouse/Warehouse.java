@@ -9,11 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Warehouse {
-    private Map<Long, ConeParams> paramsMap = new HashMap<>();
-
-    private static class SingletonHolder {
-        private static final Warehouse instance = new Warehouse();
-    }
+    private final Map<Long, ConeParams> paramsMap = new HashMap<>();
 
     public static Warehouse getInstance() {
         return Warehouse.SingletonHolder.instance;
@@ -42,5 +38,9 @@ public class Warehouse {
 
     public ConeParams get(long coneId) {
         return paramsMap.get(coneId);
+    }
+
+    private static class SingletonHolder {
+        private static final Warehouse instance = new Warehouse();
     }
 }

@@ -6,16 +6,14 @@ import repository.Specification;
 public class YSpecification implements Specification {
     double targetYMin;
     double targetYMax;
-    public YSpecification (double targetYMin, double targetYMax){
-        this.targetYMin =targetYMin;
-        this.targetYMax =targetYMax;
+
+    public YSpecification(double targetYMin, double targetYMax) {
+        this.targetYMin = targetYMin;
+        this.targetYMax = targetYMax;
     }
 
     @Override
     public boolean specify(Cone cone) {
-        if (cone.getCenter().y()<= targetYMax && cone.getCenter().y()>= targetYMin){
-            return true;
-        }
-        return false;
+        return cone.getCenter().y() <= targetYMax && cone.getCenter().y() >= targetYMin;
     }
 }

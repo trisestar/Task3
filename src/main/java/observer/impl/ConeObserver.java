@@ -12,7 +12,6 @@ import service.impl.ServiceImpl;
 import warehouse.Warehouse;
 
 
-
 public class ConeObserver implements Observer {
     public static Logger logger = LogManager.getLogger();
 
@@ -21,7 +20,6 @@ public class ConeObserver implements Observer {
         Warehouse warehouse = Warehouse.getInstance();
         Service service = new ServiceImpl();
         Cone cone = event.getSource();
-        System.out.println(cone);
         double area = service.calcArea(cone);
         double sideArea = service.calcSideArea(cone);
         double generatrix = service.calcGeneratrix(cone);
@@ -29,6 +27,6 @@ public class ConeObserver implements Observer {
         ConeParams coneParams = new ConeParams(area, sideArea, generatrix, volume);
         warehouse.put(cone.getId(), coneParams);
 
-        logger.log(Level.INFO,"Parameters were changed, id = "+ cone.getId());
+        logger.log(Level.INFO, "Parameters were changed, id = " + cone);
     }
 }

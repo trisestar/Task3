@@ -11,18 +11,18 @@ import java.util.stream.Collectors;
 public class StreamReader {
 
 
-    public static String readFile(String input){
+    public static String readFile(String input) {
 
         String text = "";
         List<String> list = new ArrayList<>();
         try {
-            list  = Files.lines(Paths.get(input)).collect(Collectors.toList());
+            list = Files.lines(Paths.get(input)).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (String s : list){
-            text+=s;
-            text+="\n";
+        for (String s : list) {
+            text += s;
+            text += "\n";
         }
 
         return text;

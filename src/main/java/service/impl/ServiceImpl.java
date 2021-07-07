@@ -37,10 +37,7 @@ public class ServiceImpl implements Service {
     }
 
     public boolean isCone(Cone cone) {
-        if (cone.getHeight() <= 0 || cone.getRadius() <= 0) {
-            return false;
-        }
-        return true;
+        return !(cone.getHeight() <= 0) && !(cone.getRadius() <= 0);
     }
 
 

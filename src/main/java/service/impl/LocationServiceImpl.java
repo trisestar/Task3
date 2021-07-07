@@ -9,29 +9,20 @@ public class LocationServiceImpl implements LocationService {
     public boolean isOnXAxis(Cone cone) {
         double yCoordinate = cone.getCenter().y();
         double zCoordinate = cone.getCenter().z();
-        if (yCoordinate ==0 && zCoordinate<= cone.getRadius() && zCoordinate >= (-cone.getRadius())){
-            return true;
-        }
-        return false;
+        return yCoordinate == 0 && zCoordinate <= cone.getRadius() && zCoordinate >= (-cone.getRadius());
     }
 
     @Override
     public boolean isOnYAxis(Cone cone) {
         double xCoordinate = cone.getCenter().x();
         double zCoordinate = cone.getCenter().z();
-        if (xCoordinate<= cone.getRadius() && xCoordinate >= (-cone.getRadius()) && zCoordinate<= cone.getRadius() && zCoordinate >= (-cone.getRadius())){
-            return true;
-        }
-        return false;
+        return xCoordinate <= cone.getRadius() && xCoordinate >= (-cone.getRadius()) && zCoordinate <= cone.getRadius() && zCoordinate >= (-cone.getRadius());
     }
 
     @Override
     public boolean isOnZAxis(Cone cone) {
         double xCoordinate = cone.getCenter().x();
         double yCoordinate = cone.getCenter().y();
-        if (yCoordinate ==0 && xCoordinate<= cone.getRadius() && xCoordinate >= (-cone.getRadius())){
-            return true;
-        }
-        return false;
+        return yCoordinate == 0 && xCoordinate <= cone.getRadius() && xCoordinate >= (-cone.getRadius());
     }
 }

@@ -16,7 +16,7 @@ public class ConeEvent extends EventObject {
     }
 
     @Override
-    public Cone getSource(){
+    public Cone getSource() {
         return (Cone) super.getSource();
     }
 }

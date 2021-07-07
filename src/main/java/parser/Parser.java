@@ -1,11 +1,11 @@
 package parser;
 
 import entity.Cone;
-import entity.Point;
 import exception.ParseException;
 import factory.ConeFactory;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,13 +36,13 @@ public class Parser {
 
                     for (int i = 1; i < 6; i++) {
                         if (splittedAgain[i].matches("[-+]?\\d+")) {
-                            coneParams[i-1] = Double.parseDouble(splittedAgain[i]);
+                            coneParams[i - 1] = Double.parseDouble(splittedAgain[i]);
                         } else {
                             throw new ParseException("Wrong line " + splittedAgain[i]);
                         }
                     }
                     ConeFactory coneFactory = new ConeFactory();
-                    list.add(coneFactory.createCone(id,coneParams));
+                    list.add(coneFactory.createCone(id, coneParams));
                 } catch (ParseException exception) {
                     exception.printStackTrace();
                     logger.error(exception);
