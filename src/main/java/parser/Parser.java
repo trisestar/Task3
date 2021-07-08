@@ -3,8 +3,10 @@ package parser;
 import entity.Cone;
 import exception.ParseException;
 import factory.ConeFactory;
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import validator.ConeValidator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +44,14 @@ public class Parser {
                         }
                     }
                     ConeFactory coneFactory = new ConeFactory();
-                    list.add(coneFactory.createCone(id, coneParams));
+                    Cone customCone = coneFactory.createCone(id, coneParams);
+                    ConeValidator validator = new ConeValidator();
+                    if (validator.validate(customCone)) {
+                        list.add(coneFactory.createCone(id, coneParams));
+                    } else {
+                        logger.log(Level.WARN,customCone);
+                        logger.log(Level.WARN,"contains wrong parameters");
+                    }
                 } catch (ParseException exception) {
                     exception.printStackTrace();
                     logger.error(exception);
